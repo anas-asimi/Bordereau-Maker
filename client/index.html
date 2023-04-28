@@ -2,53 +2,63 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="./public/favicon.svg">
+    <link rel="shortcut icon" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <script type="module" src="/main.js" defer></script>
+    <title>Bordereau-Maker</title>
   </head>
   <body>
     <main>
-      <h1>welcome visitor</h1>
-
-      <!-- number -->
-      <label for="number">
-        number :
-        <input type="number" name="number" id="number"
-      /></label>
-
-      <!-- date -->
-      <label for="date">
-        date :
-        <input type="date" name="date" id="date"
-      /></label>
-
-      <!-- sender -->
-      <label for="sender">
-        sender :
-        <input type="text" name="sender" id="sender" value="LE SERVICE DE MISE EN ŒUVRE DES PROJETS"
-      /></label>
-
-      <!-- receiver -->
-      <label for="receiver">
-        receiver :
-        <input type="text" name="receiver" id="receiver" value="LE SERVICE DES AIDES ET INCITATIONS"
-      /></label>
-
-      <!-- content -->
-      <label for="content">
-        content :
-        <input type="text" name="content" id="content" value="-	Procés-verbal de la commission d’examen technique des dossiers d’équipement en système d’irrigation localisée (Note d’observation N°1)."
-      /></label>
-
-      <!-- quantite -->
-      <label for="quantite">
-        quantite :
-        <input type="number" name="quantite" id="quantite" value="1"
-      /></label>
-
-      <!-- number -->
-      <button id="submit">Generate pdf</button>
+      <h1>Bordereau-Maker</h1>
+      <form>
+        <!-- number -->
+        <label for="number">
+          number :
+          <input type="number" name="number" id="number" value="1"
+        /></label>
+        <!-- date -->
+        <label for="date">
+          date :
+          <input type="date" name="date" id="date"
+        /></label>
+        <!-- sender -->
+        <label for="sender">
+          sender :
+          <input
+            type="text"
+            name="sender"
+            id="sender"
+            value="LE SERVICE DE MISE EN ŒUVRE DES PROJETS"
+        /></label>
+        <!-- receiver -->
+        <label for="receiver">
+          receiver :
+          <input
+            type="text"
+            name="receiver"
+            id="receiver"
+            value="LE SERVICE DES AIDES ET INCITATIONS"
+        /></label>
+        <!-- content -->
+        <label for="content">
+          content :
+          <textarea
+            type="text"
+            name="content"
+            id="content"
+        >Procés-verbal de la commission d’examen technique des dossiers d’équipement en système d’irrigation localisée (Note d’observation N°1).</textarea>
+      </label>
+        <!-- quantite -->
+        <label for="quantite">
+          quantite :
+          <input type="number" name="quantite" id="quantite" value="1"
+        /></label>
+        <!-- buttons -->
+        <div class="buttons">
+          <button id="download">download</button>
+          <button id="open">open</button>
+        </div>
+      </form>
     </main>
+    <script type="module" src="/main.js" defer></script>
   </body>
 </html>
