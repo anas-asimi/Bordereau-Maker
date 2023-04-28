@@ -40,8 +40,8 @@ app.get('/test', async (request, response) => {
 
 // this test endpoint return the generated page as pdf
 app.get('/pdf-test', async (request, response) => {
-    let pdf = await pageGenerator(data)
     response.contentType("application/pdf");
+    let pdf = await pageGenerator(data)
     response.send(pdf);
 
 })
