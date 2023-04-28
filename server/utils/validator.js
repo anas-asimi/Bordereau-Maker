@@ -1,12 +1,5 @@
 export const isValid = ({ number, date, sender, receiver, content, quantite }) => {
 
-    console.log(typeof number , number);
-    console.log(typeof date , date);
-    console.log(typeof sender , sender);
-    console.log(typeof receiver , receiver);
-    console.log(typeof content , content);
-    console.log(typeof quantite , quantite);
-
     number = parseInt(Number(number))
     quantite = parseInt(Number(quantite))
     date = Date.parse(date)
