@@ -18,9 +18,9 @@ dateEle.valueAsDate = new Date();
 buttonEle.onclick = generate
 
 // generate function
-function generate(e) {
+function generate() {
 
-    let info = {
+    let data = {
         number: numberEle.value,
         date: dateEle.value,
         sender: senderEle.value,
@@ -29,6 +29,6 @@ function generate(e) {
         quantite: quantiteEle.value,
     }
 
-    console.log(info);
-    axios.post('/', info).catch((err) => console.log(err))
+    console.log(data);
+    axios.post('/', data).catch((err) => console.log(err))
 }
