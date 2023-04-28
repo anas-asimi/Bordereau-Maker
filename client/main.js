@@ -5,8 +5,8 @@ import './style.css'
 // elements
 const numberEle = document.getElementById('number')
 const dateEle = document.getElementById('date')
-const fromEle = document.getElementById('from')
-const toEle = document.getElementById('to')
+const senderEle = document.getElementById('sender')
+const receiverEle = document.getElementById('receiver')
 const contentEle = document.getElementById('content')
 const quantiteEle = document.getElementById('quantite')
 const buttonEle = document.getElementById('submit')
@@ -23,8 +23,8 @@ function generate(e) {
     let info = {
         number: numberEle.value,
         date: dateEle.value,
-        from: fromEle.value,
-        to: toEle.value,
+        sender: senderEle.value,
+        receiver: receiverEle.value,
         content: contentEle.value,
         quantite: quantiteEle.value,
     }
