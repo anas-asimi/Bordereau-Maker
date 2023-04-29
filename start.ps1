@@ -1,0 +1,1 @@
+npm run build --prefix client/ ; npm run dev --prefix server/
