@@ -25,7 +25,7 @@ route.get('/test', async (request, response) => {
 
 
 // this test endpoint return the generated page as pdf in new tap
-route.get('/pdf-test', async (request, response) => {
+route.get('/pdf', async (request, response) => {
     let pdf = await dataToPDf(fakeData)
     response.contentType("application/pdf");
     response.send(pdf);    
