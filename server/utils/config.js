@@ -1,4 +1,4 @@
-const TEMPLATE_PATH = `${process.cwd()}\\views\\borderaux.ejs`
+const TEMPLATE_PATH = `${process.cwd()}/views/borderaux.ejs`
 
 // data for testing
 const fakeData = {
