@@ -18,7 +18,7 @@ route.post('', async ({body}, response) => {
 
 
 // this test endpoint return the generated page as html
-route.get('/test', async (request, response) => {
+route.get('/html', async (request, response) => {
     let html = await dataToHtml(fakeData)
     response.send(html);
 })
