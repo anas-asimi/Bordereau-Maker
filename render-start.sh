@@ -2,4 +2,5 @@
 
 
 # start server
-npm start --prefix server/
+ls
+npm run dev --prefix server/
