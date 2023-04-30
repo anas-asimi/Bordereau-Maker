@@ -64,7 +64,7 @@ function open(e) {
         quantite: quantiteEle.value,
     }
 
-    axios.post(SERVER_URL, data,{ responseType: 'blob' })
+    axios.post(`${HOST}:${PORT}`, data,{ responseType: 'blob' })
         .then((response) => {
             // create file link in browser's memory
             const href = URL.createObjectURL(response.data);
