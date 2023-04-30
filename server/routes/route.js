@@ -1,5 +1,5 @@
 import express from 'express'
-import { dataToHtml , htmlToPdf, dataToPDf } from '../utils/functions.js'
+import { dataToHtml , dataSanitization, dataToPDf } from '../utils/functions.js'
 import { isValid } from '../utils/validator.js'
 import {fakeData} from '../utils/config.js'
 
@@ -10,6 +10,8 @@ const route = express.Router()
 route.post('', async ({body}, response) => {
     // return bad request if body data not valid
     if (!isValid(body)) return response.status(400).send()
+    // format body attribute
+    body = dataSanitization(body)
     // return pdf
     let pdf = await dataToPDf(body)
     response.contentType("application/pdf");

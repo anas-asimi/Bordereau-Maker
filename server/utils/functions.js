@@ -1,6 +1,6 @@
 import ejs from 'ejs'
 import browser from './browserFactory.js';
-import {TEMPLATE_PATH , PORT} from './config.js'
+import { TEMPLATE_PATH, PORT } from './config.js'
 
 
 export async function htmlToPdf(html) {
@@ -20,19 +20,19 @@ export async function htmlToPdf(html) {
     console.time('close new page');
     await page.close()
     console.timeEnd('close new page');
-    
+
     return pdf
 }
 
 export async function dataToHtml(data) {
-    let html = await ejs.renderFile(TEMPLATE_PATH, {...data,PORT});
+    let html = await ejs.renderFile(TEMPLATE_PATH, { ...data, PORT });
     return html
 
 }
 
-export async function dataToPDf(data){
+export async function dataToPDf(data) {
     let html = await dataToHtml(data)
-    
+
     console.time('total')
     let pdf = await htmlToPdf(html)
     console.timeEnd('total')
@@ -42,4 +42,13 @@ export async function dataToPDf(data){
 
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
-  }
+}
+
+export function dataSanitization(params) {
+    return {
+        ...params,
+        date : params.date.replaceAll('-', '/'),
+        sender : params.sender.toUpperCase(),
+        receiver : params.receiver.toUpperCase(),
+    }
+}
