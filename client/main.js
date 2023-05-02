@@ -62,7 +62,7 @@ function open(e) {
 function downloadFile(url) {
     const link = document.createElement('a')
     link.setAttribute('href', url)
-    link.setAttribute('download' ,url.split('/').slice(-1)[0])
+    link.setAttribute('download', url.split('/').slice(-1)[0])
     link.style.display = 'none'
     document.body.appendChild(link)
     link.click()
