@@ -17,8 +17,7 @@ app.set('view engine', 'ejs')
 app.use('', route)
 
 app.listen(PORT, () => {
-    logger.info(`Server running`)
-    logger.info(`go to :`)
+    logger.info(`Server running in :`)
     logger.info(`   http://localhost:${PORT}`)
     logger.info(`   http://${ip.address()}:${PORT}`)
 })
