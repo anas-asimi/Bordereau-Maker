@@ -3,6 +3,7 @@ import './style.css'
 
 const PORT = 5555
 const HOST = 'http://localhost'
+const API = 'http://localhost:' + PORT
 
 
 // elements
@@ -34,21 +35,9 @@ function download(e) {
         quantite: quantiteEle.value,
     }
 
-    axios.post(`${HOST}:${PORT}`, data,{ responseType: 'blob' })
+    axios.post(API, data)
         .then((response) => {
-            // create file link in browser's memory
-            const href = URL.createObjectURL(response.data);
-
-            // create "a" HTML element with href to file & click
-            const link = document.createElement('a');
-            link.href = href;
-            link.setAttribute('download', 'file.pdf'); //or any other extension
-            document.body.appendChild(link);
-            link.click();
-
-            // clean up "a" element & remove ObjectURL
-            document.body.removeChild(link);
-            URL.revokeObjectURL(href);
+            downloadFile(response.data)
         })
         .catch((err) => console.log(err))
 }
@@ -64,21 +53,18 @@ function open(e) {
         quantite: quantiteEle.value,
     }
 
-    axios.post(`${HOST}:${PORT}`, data,{ responseType: 'blob' })
+    axios.post(API, data)
         .then((response) => {
-            // create file link in browser's memory
-            const href = URL.createObjectURL(response.data);
+            window.open(response.data, '_blank')
+        }).catch((err) => console.log(err))
+}
 
-            // create "a" HTML element with href to file & click
-            const link = document.createElement('a');
-            link.href = href;
-            link.target = '_blank';
-            document.body.appendChild(link);
-            link.click();
-
-            // clean up "a" element & remove ObjectURL
-            document.body.removeChild(link);
-            URL.revokeObjectURL(href);
-        })
-        .catch((err) => console.log(err))
+function downloadFile(url) {
+    const link = document.createElement('a')
+    link.setAttribute('href', url)
+    link.setAttribute('download' ,url.split('/').slice(-1)[0])
+    link.style.display = 'none'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
 }

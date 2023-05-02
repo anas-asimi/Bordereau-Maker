@@ -1,21 +1,26 @@
-import express from 'express'
-import { dataToHtml , dataSanitization, dataToPDf } from '../utils/functions.js'
+import express, { request } from 'express'
+import { dataToHtml, dataSanitization, dataToPDf } from '../utils/functions.js'
 import { isValid } from '../utils/validator.js'
-import {fakeData} from '../utils/config.js'
+import { fakeData } from '../utils/config.js'
 
 
 
 const route = express.Router()
 
-route.post('', async ({body}, response) => {
+route.post('', async (request, response) => {
+
+    let { body } = request
+
     // return bad request if body data not valid
     if (!isValid(body)) return response.status(400).send()
-    // format body attribute
-    body = dataSanitization(body)
+
+    // format body data
+    let data = dataSanitization(body)
+
     // return pdf
-    let pdf = await dataToPDf(body)
-    response.contentType("application/pdf");
-    response.send(pdf);    
+    let pdfLink = await dataToPDf(data)
+    console.log(pdfLink);
+    response.send(pdfLink)
 })
 
 
@@ -28,9 +33,8 @@ route.get('/html', async (request, response) => {
 
 // this test endpoint return the generated page as pdf in new tap
 route.get('/pdf', async (request, response) => {
-    let pdf = await dataToPDf(fakeData)
-    response.contentType("application/pdf");
-    response.send(pdf);    
+    let pdfLink = await dataToPDf(fakeData)
+    response.redirect(307, pdfLink);
 })
 
 export default route
